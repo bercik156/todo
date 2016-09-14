@@ -1,0 +1,17 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"><%= task.new_record? ? 'New Task' : "Editing task #{task.title}" %></h4>
+    </div>
+  <%= simple_form_for task, class: 'clearfix', remote: true do |f| %>
+    <div class="modal-body">
+      <%= f.input :title %>
+      <%= f.input :note %>
+      <%= f.input :deadline, as: :datetime, label: "Deadline: " %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit 'Save', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<% if tasks.empty? %>
+    <span class="text-warning">There are no tasks!</span>
+<% else %>
+    <table class="table table-hover table-bordered">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created at</th>
+        <th>Deadline</th>
+        <th>Completed?</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% tasks.each do |task| %>
+          <tr>
+            <td>
+              <strong>
+                <%= link_to edit_task_path(task), remote: true do %>
+                  <%= task.title %>
+                <%	end  %>
+              </strong>
+            </td>
+            <td class="text-info">
+              <%= task.created_at %>
+            </td>
+            <td class="text-success">
+              <%= task.deadline %>
+            </td>
+            <td>Yes or Not</td>
+            <td>
+              <%= link_to task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task #{task.title}?"} do %>
+                  <i class="glyphicon glyphicon-remove"></i>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
