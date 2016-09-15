@@ -8,6 +8,7 @@
       <%= f.input :title %>
       <%= f.input :note %>
       <%= f.input :deadline, as: :datetime, label: "Deadline: " %>
+      Completed: <%= f.input_field :completed, as: :boolean, boolean_style: :inline %>
     </div>
     <div class="modal-footer">
       <%= f.submit 'Save', class: 'btn btn-success' %>

@@ -27,7 +27,13 @@
             <td class="text-success">
               <%= task.deadline %>
             </td>
-            <td>Yes or Not</td>
+            <td>
+              <% if task.completed.blank? %>
+                  <i class="glyphicon glyphicon-minus text-danger"></i>
+              <% else %>
+                  <i class="glyphicon glyphicon-ok text-success"></i>
+              <% end %>
+            </td>
             <td>
               <%= link_to task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task #{task.title}?"} do %>
                   <i class="glyphicon glyphicon-remove"></i>
